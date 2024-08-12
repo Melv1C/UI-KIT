@@ -1,0 +1,19 @@
+{
+  "include": ["src"], /* Include only the src directory */
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+
+    /* Output directory */
+    "outDir": "dist",
+    "declaration": true,
+
+    "jsx": "react",
+
+
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}

@@ -1,0 +1,66 @@
+/*
+<div className={`kit-input ${className}`} style={{ width }}>
+    {children && <div className="kit-input-label" style={{ width: widthLabel }}>{children}</div>}
+    <div className="kit-input-field" style={{ width: widthInput }}>
+        <input 
+            type={type === 'password' && showPassword ? 'text' : type} 
+            {...rest} 
+        />
+        {type === 'password' && (
+            <div className="kit-input-eye" onClick={togglePassword}>
+                <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+            </div>
+        )}
+    </div>
+</div>
+*/
+
+
+.kit-input {
+    display: flex;
+    flex-direction: row;
+    gap: var(--kit-space-sm);
+    margin: var(--kit-space-xs);
+
+
+    .kit-input-label {
+        font-size: var(--kit-font-size-md);
+        font-weight: var(--kit-font-weight-bold);
+        display: flex;
+        align-items: center;
+    }
+
+    .kit-input-field {
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: var(--kit-space-xs);
+        padding: var(--kit-space-sm) ;
+        border: 1px solid var(--kit-color-black);
+        border-radius: var(--kit-border-radius);
+        transition: var(--kit-transition);
+
+        .kit-input-icon {
+            color: var(--kit-color-black);
+            font-size: var(--kit-font-size-md);
+        }
+
+        input {
+            width: 100%;
+            font-size: var(--kit-font-size-md);
+            border: none;
+            outline: none;
+        }
+
+        .kit-input-eye {
+            cursor: pointer;
+            position: absolute;
+            right: var(--kit-space-sm);
+            color: var(--kit-color-black);
+
+        }
+    }
+
+
+}

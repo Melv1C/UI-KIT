@@ -1,0 +1,58 @@
+:root {
+
+  --kit-color-white: #fff;
+  --kit-color-black: #000;
+
+  --kit-color-info: #007bff;
+  --kit-color-success: #28a745;
+  --kit-color-danger: #dc3545;
+  --kit-color-warning: #ffc107;
+
+  --kit-color-primary: var(--kit-color-info);
+  --kit-color-secondary: var(--kit-color-success);
+
+  --kit-text-color: var(--kit-color-black);
+
+  --kit-font-size-xs: 0.75rem;
+  --kit-font-size-sm: 0.875rem;
+  --kit-font-size-md: 1rem;
+  --kit-font-size-lg: 1.25rem;
+  --kit-font-size-xl: 1.5rem;
+
+  --kit-space-xs: 0.25rem;
+  --kit-space-sm: 0.5rem;
+  --kit-space-md: 1rem;
+  --kit-space-lg: 1.5rem;
+  --kit-space-xl: 2rem;
+
+  --kit-border-radius: 0.5rem;
+
+  --kit-transition: all 0.3s ease-in-out;
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.kit-info {
+  color: var(--kit-color-info);
+}
+
+.kit-bg-info {
+  background-color: var(--kit-color-info);
+}
+
+.kit-success {
+  color: var(--kit-color-success);
+}
+
+.kit-danger {
+  color: var(--kit-color-danger);
+}
+
+.kit-warning {
+  color: var(--kit-color-warning);
+}
+
+
+

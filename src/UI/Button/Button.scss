@@ -1,0 +1,53 @@
+.kit-btn {
+    font-size: var(--kit-font-size-md);
+    padding: var(--kit-space-sm) var(--kit-space-md);
+    margin: var(--kit-space-xs);
+    border: none;
+    border-radius: var(--kit-border-radius);
+    cursor: pointer;
+    transition: var(--kit-transition);
+
+    position: relative;
+
+    &.kit-btn-info {
+        background-color: var(--kit-color-info);
+        color: var(--kit-color-white);
+    }
+
+    &.kit-btn-success {
+        background-color: var(--kit-color-success);
+        color: var(--kit-color-white);
+    }
+
+    &.kit-btn-danger {
+        background-color: var(--kit-color-danger);
+        color: var(--kit-color-white);
+    }
+
+    &.kit-btn-warning {
+        background-color: var(--kit-color-warning);
+        color: var(--kit-color-white);
+    }
+
+    &.kit-btn-rounded {
+        border-radius: 50%;
+        aspect-ratio: 1;
+    }
+
+    &:hover {
+        opacity: 0.8;
+    }
+    
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
