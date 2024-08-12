@@ -13,7 +13,7 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "copy-css": "copyfiles -f src/**/*.css dist",
+    "copy-css": "copyfiles -u 1 src/**/*.css dist",
     "build": "npm run clean && tsc && npm run copy-css",
     "prepare": "npm run build"
   },
