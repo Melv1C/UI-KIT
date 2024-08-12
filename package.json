@@ -12,7 +12,9 @@
     }
   },
   "scripts": {
-    "build": "tsc",
+    "clean": "rimraf dist",
+    "copy-css": "copyfiles -f src/**/*.css dist",
+    "build": "npm run clean && tsc && npm run copy-css",
     "prepare": "npm run build"
   },
   "author": "Claes Melvyn",
@@ -20,6 +22,8 @@
   "description": "",
   "devDependencies": {
     "@types/react": "^18.3.3",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^6.0.1",
     "typescript": "^5.5.4"
   },
   "peerDependencies": {
