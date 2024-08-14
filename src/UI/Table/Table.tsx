@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { DataGrid, DataGridProps, GridColDef} from '@mui/x-data-grid'
 
 export interface ColumnProps {
   title: string,
-  link?: string,
+  link: string,
   width?: number,
   editable?: boolean,
   sortable?: boolean,
@@ -22,29 +22,20 @@ const setDefaultColumnPropsValues = (props: ColumnProps): ColumnProps => {
     editable: props.editable ?? false,
     sortable: props.sortable ?? false,
     filterable: props.filterable ?? false,
-    type: props.type ?? 'string',
-    valueFormatter: props.valueFormatter,
-    valueGetter: props.valueGetter,
+    type: props.type ?? 'string'
   }
 }
 
 export const newColumn = (props: ColumnProps): GridColDef => {
   const defaultProps = setDefaultColumnPropsValues(props)
   return {
-    field: defaultProps.title,
     headerName: defaultProps.title,
+    field: defaultProps.link,
     width: defaultProps.width,
     editable: defaultProps.editable,
     sortable: defaultProps.sortable,
     filterable: defaultProps.filterable,
-    type: defaultProps.type,
-    valueFormatter: defaultProps.valueFormatter,
-    valueGetter: (value, row) => {
-      if (defaultProps.valueGetter) {
-        return defaultProps.valueGetter(row)
-      }
-      return value
-    }
+    type: defaultProps.type
   }
 }
 
@@ -61,6 +52,7 @@ export const Table: React.FC<TableProps> = ({
   disableRowSelectionOnClick = true,
   ...props
 }) => {
+
   return ( 
     <div className="kit-table">
       <DataGrid
