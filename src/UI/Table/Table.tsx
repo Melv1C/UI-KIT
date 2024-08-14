@@ -22,7 +22,9 @@ const setDefaultColumnPropsValues = (props: ColumnProps): ColumnProps => {
     editable: props.editable ?? false,
     sortable: props.sortable ?? false,
     filterable: props.filterable ?? false,
-    type: props.type ?? 'string'
+    type: props.type ?? 'string',
+    valueFormatter: props.valueFormatter,
+    valueGetter: props.valueGetter
   }
 }
 
@@ -35,7 +37,9 @@ export const newColumn = (props: ColumnProps): GridColDef => {
     editable: defaultProps.editable,
     sortable: defaultProps.sortable,
     filterable: defaultProps.filterable,
-    type: defaultProps.type
+    type: defaultProps.type,
+    valueFormatter: defaultProps.valueFormatter,
+    valueGetter: defaultProps.valueGetter
   }
 }
 
