@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { DataGrid, DataGridProps, GridColDef} from '@mui/x-data-grid'
+import { DataGrid, DataGridProps, GridColDef, GridValueGetter} from '@mui/x-data-grid'
 
 export interface ColumnProps {
   title: string,
@@ -22,14 +22,21 @@ const setDefaultColumnPropsValues = (props: ColumnProps): ColumnProps => {
     editable: props.editable ?? false,
     sortable: props.sortable ?? false,
     filterable: props.filterable ?? false,
-    type: props.type ?? 'string',
-    valueFormatter: props.valueFormatter,
-    valueGetter: props.valueGetter
+    type: props.type ?? 'string'
   }
 }
 
 export const newColumn = (props: ColumnProps): GridColDef => {
   const defaultProps = setDefaultColumnPropsValues(props)
+
+
+
+  let valueGetter: GridValueGetter|undefined = undefined
+  if (props.valueGetter) {
+    valueGetter = (value, row) => props.valueGetter!(row)
+  }
+
+
   return {
     headerName: defaultProps.title,
     field: defaultProps.link,
@@ -38,8 +45,8 @@ export const newColumn = (props: ColumnProps): GridColDef => {
     sortable: defaultProps.sortable,
     filterable: defaultProps.filterable,
     type: defaultProps.type,
-    valueFormatter: defaultProps.valueFormatter,
-    valueGetter: defaultProps.valueGetter
+    valueFormatter: props.valueFormatter,
+    valueGetter: valueGetter
   }
 }
 
