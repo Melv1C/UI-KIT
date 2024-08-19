@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import { DataGrid, DataGridProps, GridColDef, GridValueGetter} from '@mui/x-data-grid'
 
-export interface ColumnProps {
+interface ColumnProps {
   title: string,
   link: string,
   width?: number,

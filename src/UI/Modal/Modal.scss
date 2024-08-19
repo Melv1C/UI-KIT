@@ -1,0 +1,109 @@
+/*
+<div className={`kit-modal ${open ? 'kit-modal-open' : ''}`}>
+    <div className="kit-modal-overlay" onClick={closeOnOverlayClick ? onClose : undefined}></div>
+    <div className={`kit-modal-content kit-modal-${variant}`}>
+        <div className="kit-modal-header">
+            <div className="kit-modal-title">{title}</div>
+            {closeBtn && <button className="kit-modal-close" onClick={onClose}><FontAwesomeIcon icon={faTimes} /></button>}
+        </div>
+        <div className="kit-modal-body">
+            {children}
+        </div>
+    </div>
+</div> 
+*/
+
+.kit-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+
+    &-open {
+        display: block;
+    }
+
+    &-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    &-content {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        border-radius: var(--kit-border-radius);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        max-width: 90%;
+        max-height: 90%;
+        overflow: auto;
+
+        border: 3px solid;
+    }
+
+    &-info {
+        border-color: var(--kit-color-info);
+    }
+
+    &-success {
+        border-color: var(--kit-color-success);
+    }
+
+    &-warning {
+        border-color: var(--kit-color-warning);
+    }
+
+    &-danger {
+        border-color: var(--kit-color-danger);
+    }
+
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--kit-space-sm);
+        border-bottom: 3px solid;
+        border-color: inherit;
+    }
+
+    &-title {
+        font-size: var(--kit-font-size-lg);
+        font-weight: bold;
+    }
+
+    &-close {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: var(--kit-font-size-xl);
+        color: var(--kit-color-danger);
+    }
+
+    &-body {
+        padding: var(--kit-space-sm);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100px;
+        min-width: 200px;
+    }
+
+    &-footer {
+        display: flex;
+        justify-content: flex-end;
+        padding: var(--kit-space-sm);
+        border-top: 3px solid;
+        border-color: inherit;
+    }
+
+}
