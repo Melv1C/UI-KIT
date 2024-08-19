@@ -19,8 +19,8 @@ export { Switch }
 import { MyToastContainer, MyToast as toast } from './UI/Toast/Toast'
 export { toast }
 
-import { Modal, ModalContainer, showModal, ConfirmModalContainer, confirm, YesNoModalContainer, yesno } from './UI/Modal/Modal'
-export { Modal, showModal, confirm, yesno }
+import { Modal, ConfirmModal, YesNoModal, ModalContainer, showModal, ConfirmModalContainer, confirm, YesNoModalContainer, yesno } from './UI/Modal/Modal'
+export { Modal, ConfirmModal, YesNoModal, showModal, confirm, yesno }
 
 import './Kit.css'
 
