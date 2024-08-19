@@ -12,6 +12,7 @@ export interface ColumnProps {
   type?: 'number' | 'string' | 'date' | 'dateTime' | 'boolean',
   valueFormatter?: (value: any) => any,
   valueGetter?: (row: any) => any,
+  content?: (row: any) => React.ReactNode
 }
 
 const setDefaultColumnPropsValues = (props: ColumnProps): ColumnProps => {
@@ -29,13 +30,10 @@ const setDefaultColumnPropsValues = (props: ColumnProps): ColumnProps => {
 export const newColumn = (props: ColumnProps): GridColDef => {
   const defaultProps = setDefaultColumnPropsValues(props)
 
-
-
   let valueGetter: GridValueGetter|undefined = undefined
   if (props.valueGetter) {
     valueGetter = (value, row) => props.valueGetter!(row)
   }
-
 
   return {
     headerName: defaultProps.title,
@@ -46,7 +44,8 @@ export const newColumn = (props: ColumnProps): GridColDef => {
     filterable: defaultProps.filterable,
     type: defaultProps.type,
     valueFormatter: props.valueFormatter,
-    valueGetter: valueGetter
+    valueGetter: valueGetter,
+    renderCell: props.content ? (params) => props.content!(params.row) : undefined
   }
 }
 
