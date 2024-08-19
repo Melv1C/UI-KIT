@@ -52,13 +52,13 @@ export const newColumn = (props: ColumnProps): GridColDef => {
 interface TableProps extends Omit<DataGridProps, 'rows' | 'columns' | 'processRowUpdate' | 'onProcessRowUpdateError'> {
   columns: GridColDef[]
   data: any[] & { id: string | number }[],
-  setData?: (rows: any[]) => void,
+  UpdateData?: (newData: any) => void,
 }
 
 export const Table: React.FC<TableProps> = ({ 
   columns,
   data,
-  setData,
+  UpdateData,
   disableRowSelectionOnClick = true,
   ...props
 }) => {
@@ -70,10 +70,10 @@ export const Table: React.FC<TableProps> = ({
         columns={columns}
         disableRowSelectionOnClick={disableRowSelectionOnClick}
         processRowUpdate={(newRow, _) => {
-          if (setData) {
-            setData(data.map(row => row.id === newRow.id ? newRow : row))
+          if (UpdateData) {
+            UpdateData(newRow)
           }
-          return newRow          
+          return newRow    
         }}
         onProcessRowUpdateError={(error) => {
           console.log(error)
