@@ -1,17 +1,17 @@
 
 import React from 'react'
 
+import { Container, RowContainer, ColumnContainer } from './UI/Container/Container'
+export { Container, RowContainer, ColumnContainer }
+
 import Button from './UI/Button'
 export { Button }
 
-import Input from './UI/Input'
-export { Input }
+import {Input, Select} from './UI/Input/Input'
+export { Input, Select }
 
-import Table from './UI/Table'
-export { Table }
-
-import { newColumn } from './UI/Table'
-export { newColumn }
+import { Table, newColumn } from './UI/Table/Table'
+export { Table, newColumn }
 
 import { MySwitch as Switch } from './UI/Switches/Switches'
 export { Switch }

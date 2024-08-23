@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
-import { DataGrid, DataGridProps, GridColDef, GridValueGetter} from '@mui/x-data-grid'
+import { DataGrid, DataGridProps, GridColDef, GridValueGetter, GRID_CHECKBOX_SELECTION_COL_DEF} from '@mui/x-data-grid'
 
 interface ColumnProps {
   title: string,
@@ -49,24 +49,45 @@ export const newColumn = (props: ColumnProps): GridColDef => {
   }
 }
 
-interface TableProps extends Omit<DataGridProps, 'rows' | 'columns' | 'processRowUpdate' | 'onProcessRowUpdateError'> {
+
+interface TableProps extends Omit<DataGridProps, 'rows' | 'columns' | 'processRowUpdate' | 'onProcessRowUpdateError' | 'onRowSelectionModelChange' | 'getRowId'> {
+  height?: React.CSSProperties["height"],
   columns: GridColDef[]
-  data: any[] & { id: string | number }[],
+  data: any[],
+  GridId?: string,
   UpdateData?: (newData: any) => void,
+  onSelect?: (selected: any) => void,
 }
 
 export const Table: React.FC<TableProps> = ({ 
+  height = 300,
   columns,
   data,
+  GridId = '_GridId',
   UpdateData,
+  onSelect,
   disableRowSelectionOnClick = true,
+  checkboxSelection = false,
   ...props
 }) => {
 
+  const [GridData, setGridData] = useState<any[]>([])
+
+  useEffect(() => {
+    const newData = [...data]
+    if (GridId === '_GridId') {
+      newData.forEach((d, i) => {
+        d._GridId = i
+      })
+    }
+    setGridData(newData)
+  }, [data])
+
   return ( 
-    <div className="kit-table">
+    <div className="kit-table" style={{ height: height }}>
       <DataGrid
-        rows={data}
+        getRowId={(row) => row[GridId]}
+        rows={GridData}
         columns={columns}
         disableRowSelectionOnClick={disableRowSelectionOnClick}
         processRowUpdate={(newRow, _) => {
@@ -78,6 +99,13 @@ export const Table: React.FC<TableProps> = ({
         onProcessRowUpdateError={(error) => {
           console.log(error)
         }}
+        checkboxSelection={checkboxSelection}
+        onRowSelectionModelChange={(selected) => {
+          if (onSelect) {
+            onSelect(GridData.filter(d => selected.includes(d[GridId])))
+          }
+        }}
+        pageSizeOptions={[100]}
         {...props}
       />        
     </div>
