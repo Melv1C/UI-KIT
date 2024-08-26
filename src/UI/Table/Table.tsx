@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { DataGrid, DataGridProps, GridColDef, GridValueGetter, GRID_CHECKBOX_SELECTION_COL_DEF} from '@mui/x-data-grid'
+import { DataGrid, DataGridProps, GridColDef, GridValueGetter, GRID_CHECKBOX_SELECTION_COL_DEF, useGridApiRef} from '@mui/x-data-grid'
 
 interface ColumnProps {
   title: string,
@@ -71,6 +71,8 @@ export const Table: React.FC<TableProps> = ({
   ...props
 }) => {
 
+  const apiRef = useGridApiRef();
+
   const [GridData, setGridData] = useState<any[]>([])
 
   useEffect(() => {
@@ -82,6 +84,12 @@ export const Table: React.FC<TableProps> = ({
     }
     setGridData(newData)
   }, [data])
+
+  useEffect(() => {
+    // if row has _selected property to true, then select it
+    const selected = GridData.filter(d => d._selected).map(d => d[GridId])
+    apiRef.current.setRowSelectionModel(selected)
+  }, [GridData])
 
   return ( 
     <div className="kit-table" style={{ height: height }}>
@@ -105,6 +113,7 @@ export const Table: React.FC<TableProps> = ({
             onSelect(GridData.filter(d => selected.includes(d[GridId])))
           }
         }}
+        
         pageSizeOptions={[100]}
         {...props}
       />        
