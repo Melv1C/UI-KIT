@@ -7,8 +7,11 @@ export { Container, RowContainer, ColumnContainer }
 import Button from './UI/Button'
 export { Button }
 
-import {Input, Select} from './UI/Input/Input'
-export { Input, Select }
+import {Input} from './UI/Input/Input'
+export { Input }
+
+import { Select, SelectOption } from './UI/Select/Select'
+export { Select, SelectOption }
 
 import { Table, newColumn } from './UI/Table/Table'
 export { Table, newColumn }

@@ -1,0 +1,106 @@
+/*
+<div className={`kit-select ${className}`}>
+        <span className="kit-select-value">{value?.label}</span>
+        <button className="kit-select-clear">&times;</button>
+        <div className="kit-select-divider" />
+        <div className="kit-select-caret" />
+        <ul className="kit-select-options">
+            {options.map((option) => (
+                <li
+                    key={option.value}
+                    className="kit-select-option"
+                >
+                    {option.label}
+                </li>
+            ))}
+        </ul>        
+    </div>
+*/
+
+.kit-select {
+    position: relative;
+    width: 20rem;
+    min-height: 1.5rem;
+    border: 1px solid #777;
+    display: flex;
+    align-items: center;
+    gap: var(--kit-space-sm);
+    padding: var(--kit-space-sm);
+    border-radius: var(--kit-border-radius);
+    outline: none;
+
+    &:focus {
+        border-color: var(--kit-color-primary);
+    }
+
+    .kit-select-value {
+        flex-grow: 1;
+    }
+
+    .kit-select-clear {
+        background: none;
+        color: #777;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 0;
+        font-size: var(--kit-font-size-lg);
+
+        &:hover, &:focus {
+            color: #333;
+        }
+    }
+
+    .kit-select-divider {
+        background: #777;
+        align-self: stretch;
+        width: 1px;
+    }
+
+    .kit-select-caret {
+        translate: 0 25%;
+        border: 5px solid transparent;
+        border-top-color: #777;
+    }
+
+    .kit-select-options {
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: none;
+        max-height: 10rem;
+        overflow-y: auto;
+        border: 1px solid #777;
+        border-radius: var(--kit-border-radius);
+        width: 100%;
+        left: 0;
+        top: calc(100% + 1px);
+        background-color: white;
+        z-index: 100;
+
+        &.show {
+            display: block;
+        }
+
+        .kit-select-option {
+            padding: var(--kit-space-xs) var(--kit-space-sm);
+            cursor: pointer;
+
+            &.selected {
+                background-color: var(--kit-color-primary);
+                opacity: 1 !important;
+                color: white;
+            }
+
+            &.highlighted {
+                background-color: var(--kit-color-primary);
+                opacity: 0.5;
+                color: white;
+            }
+
+        }
+    }
+
+    
+}
