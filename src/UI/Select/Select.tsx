@@ -6,6 +6,10 @@ export type SelectOption = {
     value: string | number
 }
 
+function isEqual(option1: SelectOption, option2: SelectOption) {
+    return (option1.value === option2.value) && (option1.label === option2.label)
+}
+
 type SelectProps = {
     options: SelectOption[]
     value?: SelectOption
@@ -28,13 +32,13 @@ export const Select: React.FC<SelectProps> = ({
     }
 
     function selectOption(option: SelectOption) {
-        if (option !== value) {
+        if (!value || !isEqual(option, value)) {
             onChange(option)
         }
     }
 
     function isOptionSelected(option: SelectOption) {
-        return option === value
+        return value && isEqual(option, value)
     }
 
     useEffect(() => {

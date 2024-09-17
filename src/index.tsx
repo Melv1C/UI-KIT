@@ -10,8 +10,8 @@ export { Button }
 import {Input} from './UI/Input/Input'
 export { Input }
 
-import { Select, SelectOption } from './UI/Select/Select'
-export { Select, SelectOption }
+import { Select } from './UI/Select/Select'
+export { Select }
 
 import { Table, newColumn } from './UI/Table/Table'
 export { Table, newColumn }
@@ -24,6 +24,9 @@ export { toast }
 
 import { Modal, ConfirmModal, YesNoModal, ModalContainer, showModal, ConfirmModalContainer, confirm, YesNoModalContainer, yesno } from './UI/Modal/Modal'
 export { Modal, ConfirmModal, YesNoModal, showModal, confirm, yesno }
+
+import { NavBar } from './UI/NavBar/NavBar'
+export { NavBar }
 
 import './Kit.css'
 

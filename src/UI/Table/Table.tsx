@@ -92,7 +92,7 @@ export const Table: React.FC<TableProps> = ({
   }, [GridData])
 
   return ( 
-    <div className="kit-table" style={{ height: height }}>
+    <div className="kit-table" style={{ height: height, width: '100%' }}>
       <DataGrid
         apiRef={apiRef}
         getRowId={(row) => row[GridId]}
