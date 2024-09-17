@@ -90,10 +90,6 @@
 
     &-body {
         padding: var(--kit-space-sm);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         min-height: 100px;
         min-width: 200px;
         overflow: auto;
