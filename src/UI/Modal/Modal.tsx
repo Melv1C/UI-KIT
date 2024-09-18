@@ -3,6 +3,8 @@ import React, { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
+import { Button } from '../..'
+
 import './Modal.css'
 
 interface ModalProps {
@@ -61,8 +63,8 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
         <Modal open={open} onClose={onClose} title={title} variant={variant} closeBtn={closeBtn} closeOnOverlayClick={closeOnOverlayClick}>
             {children}
             <div className="kit-modal-footer">
-                <button className="kit-btn kit-btn-danger" onClick={onCancel}>Annuler</button>
-                <button className="kit-btn kit-btn-success" onClick={onConfirm}>Confirmer</button>
+                <Button variant="danger" onClick={onCancel}>Annuler</Button>
+                <Button variant="success" onClick={onConfirm}>Confirmer</Button>
             </div>
         </Modal>
     )
@@ -88,8 +90,8 @@ export const YesNoModal: React.FC<YesNoModalProps> = ({
         <Modal open={open} onClose={onClose} title={title} variant={variant} closeBtn={closeBtn} closeOnOverlayClick={closeOnOverlayClick}>
             {children}
             <div className="kit-modal-footer">
-                <button className="kit-btn kit-btn-danger" onClick={onNo}>Non</button>
-                <button className="kit-btn kit-btn-success" onClick={onYes}>Oui</button>
+                <Button variant="danger" onClick={onNo}>Non</Button>
+                <Button variant="success" onClick={onYes}>Oui</Button>
             </div>
         </Modal>
     )

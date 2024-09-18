@@ -19,13 +19,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0.5rem 1rem;
   background-color: #333;
   color: #fff;
   font-size: 1.2rem;
   font-weight: 500;
   position: relative;
-  z-index: 1000;
+  z-index: 100;
 }
 .kit-navbar .kit-navbar-title {
   font-size: 1.5rem;
@@ -47,8 +47,15 @@
   text-align: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-.kit-navbar .kit-navbar-link {
+.kit-navbar .kit-navbar-links .kit-navbar-link {
   margin: 0 10px;
+}
+.kit-navbar .kit-navbar-links .kit-navbar-link a {
+  color: #fff;
+  text-decoration: none;
+}
+.kit-navbar .kit-navbar-links .kit-navbar-link a:hover {
+  font-weight: 700;
 }
 .kit-navbar .kit-navbar-burger {
   display: none;

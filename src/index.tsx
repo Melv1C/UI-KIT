@@ -25,6 +25,9 @@ export { toast }
 import { Modal, ConfirmModal, YesNoModal, ModalContainer, showModal, ConfirmModalContainer, confirm, YesNoModalContainer, yesno } from './UI/Modal/Modal'
 export { Modal, ConfirmModal, YesNoModal, showModal, confirm, yesno }
 
+import { OrderListModalContainer, openOrderListModal } from './UI/OrderListModal/OrderListModal'
+export { openOrderListModal }
+
 import { NavBar } from './UI/NavBar/NavBar'
 export { NavBar }
 
@@ -37,6 +40,7 @@ export const KitContainer = () => {
       <ModalContainer />
       <ConfirmModalContainer />
       <YesNoModalContainer />
+      <OrderListModalContainer />
     </div>
   )
 }

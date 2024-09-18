@@ -1,0 +1,55 @@
+/*
+<div className="kit-modal-order-list-items">
+                    {list.map((item, index) => (
+                        <div 
+                        key={index} 
+                        className="kit-modal-order-list-item" 
+                        draggable={true}
+                        onDragStart={() => setDraggedItem(index)}
+                        onDragOver={() => setDraggedOverItem(index)}
+                        onDragEnd={() => {
+                            if (draggedItem !== null && draggedOverItem !== null) {
+                                const _temp = [...list]
+                                const draggedIndex = _temp.splice(draggedItem, 1)[0]
+                                _temp.splice(draggedOverItem, 0, draggedIndex)
+                                setList(_temp)
+                            }
+                            setDraggedItem(null)
+                            setDraggedOverItem(null)
+                        }}
+                        >
+                            {item}
+                        </div>
+                    ))}
+                </div>
+*/
+
+.kit-modal-order-list-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 8px;
+
+    .kit-modal-order-list-item {
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: move;
+        transition: background-color 0.3s;
+
+        &::before {
+            content: '☰';
+            margin-right: 1rem;
+        }
+
+        &:hover {
+            background-color: #f9f9f9;
+        }
+
+        
+    }
+
+    
+
+
+}
