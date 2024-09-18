@@ -59,7 +59,7 @@ const OrderListModalContainer = () => {
             <Modal 
                 open={showModal} 
                 onClose={closeModal}
-                title="Order List"
+                title="Changer l'ordre"
                 variant="info" 
                 closeBtn={false} 
                 closeOnOverlayClick={false}
@@ -68,8 +68,11 @@ const OrderListModalContainer = () => {
                         <Button variant='danger' onClick={() => {
                             props.onCancel && props.onCancel()
                             closeModal()
-                        }}>Cancel</Button>
-                        <Button variant='success' onClick={() => props.onConfirm(list)}>Confirm</Button>
+                        }}>Annuler</Button>
+                        <Button variant='success' onClick={() => {
+                            props.onConfirm(list)
+                            closeModal()
+                        }}>Confirmer</Button>
                     </>
                 }
             >
