@@ -6,11 +6,11 @@ import './OrderListModal.css'
 
 type OrderListModalProps = {
     // list of objects
-    list: any[]
+    list: string[]
     // callback function to be called when the user confirms the order
-    onConfirm: (list: any[]) => void
+    onConfirm: (list: string[]) => void
     // callback function to be called when the user cancels the order
-    onCancel: () => void
+    onCancel?: () => void
 }
 
 const OrderListModalContainer = () => {
@@ -90,7 +90,7 @@ const OrderListModalContainer = () => {
                 </div>
 
                 <div className="kit-modal-footer">
-                    <Button variant="danger" onClick={() => { props.onCancel(); closeModal() }}>Annuler</Button>
+                    <Button variant="danger" onClick={() => { props.onCancel?.(); closeModal() }}>Annuler</Button>
                     <Button variant="success" onClick={() => { props.onConfirm(list); closeModal() }}>Confirmer</Button>
                 </div>
             </Modal>
@@ -98,7 +98,7 @@ const OrderListModalContainer = () => {
     )
 }
 
-function openOrderListModal(list: any[], onConfirm: (list: any[]) => void, onCancel: () => void) {
+function openOrderListModal(list: any[], onConfirm: (list: any[]) => void, onCancel?: () => void) {
     const container = document.getElementById('kit-modal-order-list-container');
     container?.dispatchEvent(new CustomEvent('openOrderListModal', { detail: { list, onConfirm, onCancel } }))
 }
