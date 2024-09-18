@@ -15,6 +15,7 @@ interface ModalProps {
     variant?: 'info' | 'success' | 'warning' | 'danger',
     closeBtn?: boolean,
     closeOnOverlayClick?: boolean,
+    footer?: React.ReactNode
 }
 
 export const Modal: React.FC<ModalProps> = ({ 
@@ -24,7 +25,8 @@ export const Modal: React.FC<ModalProps> = ({
     children,
     variant = 'info',
     closeBtn = true,
-    closeOnOverlayClick = true
+    closeOnOverlayClick = true,
+    footer=undefined
 }) => {
     return (
         <div className={`kit-modal ${open ? 'kit-modal-open' : ''}`}>
@@ -37,6 +39,9 @@ export const Modal: React.FC<ModalProps> = ({
                 <div className="kit-modal-body">
                     {children}
                 </div>
+                {footer && <div className="kit-modal-footer">
+                    {footer}
+                </div>}
             </div>
         </div>        
     )
@@ -60,12 +65,13 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
     onCancel = onClose
 }) => {
     return (
-        <Modal open={open} onClose={onClose} title={title} variant={variant} closeBtn={closeBtn} closeOnOverlayClick={closeOnOverlayClick}>
+        <Modal open={open} onClose={onClose} title={title} variant={variant} closeBtn={closeBtn} closeOnOverlayClick={closeOnOverlayClick} footer={
+                <>
+                    <Button variant="danger" onClick={onCancel}>Annuler</Button>
+                    <Button variant="success" onClick={onConfirm}>Confirmer</Button>
+                </>
+            }>
             {children}
-            <div className="kit-modal-footer">
-                <Button variant="danger" onClick={onCancel}>Annuler</Button>
-                <Button variant="success" onClick={onConfirm}>Confirmer</Button>
-            </div>
         </Modal>
     )
 }
@@ -87,12 +93,13 @@ export const YesNoModal: React.FC<YesNoModalProps> = ({
     onNo = onClose
 }) => {
     return (
-        <Modal open={open} onClose={onClose} title={title} variant={variant} closeBtn={closeBtn} closeOnOverlayClick={closeOnOverlayClick}>
-            {children}
-            <div className="kit-modal-footer">
+        <Modal open={open} onClose={onClose} title={title} variant={variant} closeBtn={closeBtn} closeOnOverlayClick={closeOnOverlayClick} footer={
+            <>
                 <Button variant="danger" onClick={onNo}>Non</Button>
                 <Button variant="success" onClick={onYes}>Oui</Button>
-            </div>
+            </>
+        }>
+            {children}
         </Modal>
     )
 }

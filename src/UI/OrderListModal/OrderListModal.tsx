@@ -63,6 +63,15 @@ const OrderListModalContainer = () => {
                 variant="info" 
                 closeBtn={false} 
                 closeOnOverlayClick={false}
+                footer={
+                    <>
+                        <Button variant='danger' onClick={() => {
+                            props.onCancel && props.onCancel()
+                            closeModal()
+                        }}>Cancel</Button>
+                        <Button variant='success' onClick={() => props.onConfirm(list)}>Confirm</Button>
+                    </>
+                }
             >
                 {/* draggable list */}
                 <div className="kit-modal-order-list-items">
@@ -87,11 +96,6 @@ const OrderListModalContainer = () => {
                             {item}
                         </div>
                     ))}
-                </div>
-
-                <div className="kit-modal-footer">
-                    <Button variant="danger" onClick={() => { props.onCancel?.(); closeModal() }}>Annuler</Button>
-                    <Button variant="success" onClick={() => { props.onConfirm(list); closeModal() }}>Confirmer</Button>
                 </div>
             </Modal>
         </div>
