@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*
 <div className="kit-modal-order-list-items">
                     {list.map((item, index) => (
@@ -37,9 +36,9 @@
   cursor: move;
   transition: background-color 0.3s;
 }
-.kit-modal-order-list-items .kit-modal-order-list-item::before {
-  content: "☰";
+.kit-modal-order-list-items .kit-modal-order-list-item-icon {
   margin-right: 1rem;
+  touch-action: none;
 }
 .kit-modal-order-list-items .kit-modal-order-list-item:hover {
   background-color: #f9f9f9;

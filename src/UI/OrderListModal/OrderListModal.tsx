@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 
-import { Modal, Button } from '../..'
+import { Modal, Button, DraggableList } from '../..'
+
 
 import './OrderListModal.css'
 
@@ -15,8 +16,6 @@ type OrderListModalProps = {
 
 const OrderListModalContainer = () => {
     const [showModal, setShowModal] = useState(false)
-    const [draggedItem, setDraggedItem] = useState<number | null>(null)
-    const [draggedOverItem, setDraggedOverItem] = useState<number | null>(null)
 
     const [props, setProps] = useState<OrderListModalProps>({
         list: [],
@@ -78,27 +77,7 @@ const OrderListModalContainer = () => {
             >
                 {/* draggable list */}
                 <div className="kit-modal-order-list-items">
-                    {list.map((item, index) => (
-                        <div 
-                        key={index} 
-                        className="kit-modal-order-list-item" 
-                        draggable={true}
-                        onDragStart={() => setDraggedItem(index)}
-                        onDragOver={() => setDraggedOverItem(index)}
-                        onDragEnd={() => {
-                            if (draggedItem !== null && draggedOverItem !== null) {
-                                const _temp = [...list]
-                                const draggedIndex = _temp.splice(draggedItem, 1)[0]
-                                _temp.splice(draggedOverItem, 0, draggedIndex)
-                                setList(_temp)
-                            }
-                            setDraggedItem(null)
-                            setDraggedOverItem(null)
-                        }}
-                        >
-                            {item}
-                        </div>
-                    ))}
+                    <DraggableList list={list} onReorder={setList} />
                 </div>
             </Modal>
         </div>

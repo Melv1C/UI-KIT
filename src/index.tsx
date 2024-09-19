@@ -25,6 +25,9 @@ export { toast }
 import { Modal, ConfirmModal, YesNoModal, ModalContainer, showModal, ConfirmModalContainer, confirm, YesNoModalContainer, yesno } from './UI/Modal/Modal'
 export { Modal, ConfirmModal, YesNoModal, showModal, confirm, yesno }
 
+import { DraggableList } from './UI/DraggableList/DraggableList'
+export { DraggableList }
+
 import { OrderListModalContainer, openOrderListModal } from './UI/OrderListModal/OrderListModal'
 export { openOrderListModal }
 

@@ -1,0 +1,48 @@
+/*
+<DragDropContext onDragEnd={onDragEnd}>
+            <Droppable droppableId="droppable">
+                {(provided, snapshot) => (
+                    <div {...provided.droppableProps} ref={provided.innerRef} className={`kit-draggable-list ${snapshot.isDraggingOver ? 'dragging-over' : ''}`}>
+                        {list.map((item, index) => (
+                            <Draggable key={index} draggableId={index.toString()} index={index}>
+                                {(provided, snapshot) => (
+                                    <div ref={provided.innerRef} className={`kit-draggable-list-item ${snapshot.isDragging ? 'dragging' : ''}`} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                        {item}
+                                    </div>
+                                )}
+                            </Draggable>
+                        ))}
+                        {provided.placeholder}
+                    </div>
+                )}
+            </Droppable>
+        </DragDropContext>
+*/
+
+
+.kit-draggable-list {
+    
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 8px;
+
+    &.dragging-over {
+        background-color: #f9f9f9;
+    }
+
+    .kit-draggable-list-item {
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: move;
+        transition: background-color 0.3s;
+
+        user-select: none;
+
+        &.dragging {
+            background-color: #f9f9f9;
+        }
+    }
+}
